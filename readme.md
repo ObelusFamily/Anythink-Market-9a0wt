@@ -10,8 +10,11 @@ When implementing a new feature or fixing a bug, please create a new pull reques
 
 ## First setup
 
+<<<<<<< HEAD
 - Run the docker build
     - docker-compose up -> to run the containers
     - docker-compose down -> to stop the containers
 -
+=======
+>>>>>>> bfccce7e803a03bb7907df038fb58e55bb888bed
 **[TODO 05/01/2018 @vanessa-cooper]:** _It's been a while since anyone ran a fresh copy of this repo. I think it's worth documenting the steps needed to install and run the repo on a new machine?_
