@@ -157,7 +157,7 @@ router.post("/", auth.required, function(req, res, next) {
 });
 
 // return a item
-router.get("/:item", auth.optional, function(req, res, next) {
+router.get("/:item:title", auth.optional, function(req, res, next) {
   Promise.all([
     req.payload ? User.findById(req.payload.id) : null,
     req.item.populate("seller").execPopulate()
@@ -165,6 +165,20 @@ router.get("/:item", auth.optional, function(req, res, next) {
     .then(function(results) {
       var user = results[0];
 
+      return res.json({ item: req.item.toJSONFor(user) });
+    })
+    .catch(next);
+});
+
+// return a title
+router.get("/:title", auth.optional, function(req, res, next) {
+  Promise.all([
+    req.payload ? Item.find({title: req.params.title}) : null,
+   
+  ])
+    .then(function(results) {
+      var item = results[0];
+      
       return res.json({ item: req.item.toJSONFor(user) });
     })
     .catch(next);
